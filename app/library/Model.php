@@ -40,7 +40,9 @@ class Model {
     protected $methods          =   array('strict','order','alias','having','group','lock','distinct','auto','filter','validate','result','token','index','force');
 
 
-	public function __construct(){}
+	public function __construct(){
+		$this->db();
+	}
 
 	//public function __set(){}
 
@@ -52,7 +54,9 @@ class Model {
 
     //public function __call($name) {
 
-	public function db(){}
+	public function db(){
+		$this->db = Db::getInstance();		
+	}
 
 	public function add(){}
 
