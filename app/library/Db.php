@@ -17,7 +17,7 @@ class Db{
 	
 	
 	static private function parseConfig(){
-		$_config = array_change_key_case(C('db'));
+		$_config = @array_change_key_case(C('db'));
 		$config  = array(
 			'type' 		=> (C('db','type')) ? C('db','type') : 'mysql',
 			'hostname'  => (C('db','hostname')) ? C('db','hostname') : 'localhost',
