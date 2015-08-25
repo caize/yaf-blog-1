@@ -58,7 +58,22 @@ class Model {
 		$this->db = Db::getInstance();		
 	}
 
-	public function add(){}
+	/**
+	 * @func 添加数据
+	 * @param 
+	 * @return 
+	 */
+	public function add(){
+		if(!empty($this->data)){
+			$data = $this->data;	// 获取数据对象的值
+			$this->data = array();	//重置数据
+		}else{
+			$this->error = L('_DATA_TYPE_INVALID_');
+			return false;
+		}
+		$re = $this->db->insert($data);
+		return $re;
+	}
 
 	public function save(){}
 	
