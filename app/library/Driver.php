@@ -109,6 +109,19 @@ abstract class Driver{
 	}
 
 
+    /**
+     * 插入记录
+     * @access public
+     * @param array $data 数据
+     * @param array $options 参数表达式
+     * @param boolean $replace 是否replace
+     * @return false | int
+     */
+	public function insert($data = array(), $options = array(), $replace = false){
+	
+	}
+
+
 	/**
 	 * 释放查询结果
 	 * @access public

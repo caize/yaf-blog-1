@@ -2,7 +2,13 @@
 
 class PostModel extends Model{
 	
+
+
+
 }
+
+
+?>
 
 
 
