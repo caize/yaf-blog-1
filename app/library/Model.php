@@ -41,6 +41,10 @@ class Model {
 
 
 	public function __construct(){
+		if(!isset($this->tablePrefix)){
+            $this->tablePrefix = C('db','prefix');
+        }
+		$this->name = $this->getModelName();
 		$this->db();
 	}
 
@@ -60,19 +64,20 @@ class Model {
 
 	/**
 	 * @func 添加数据
-	 * @param 
-	 * @return 
+	 * @param $replace 是否replace 默认false
+	 * @return mixed
 	 */
-	public function add(){
+	public function add($replace = false){
 		if(!empty($this->data)){
 			$data = $this->data;	// 获取数据对象的值
 			$this->data = array();	//重置数据
 		}else{
-			$this->error = L('_DATA_TYPE_INVALID_');
+			$this->error = die('_DATA_TYPE_INVALID_');
 			return false;
 		}
-		$re = $this->db->insert($data);
-		return $re;
+		$options = $this->_parseOptions();
+		$result = $this->db->insert($data,$options,$replace);
+		return $result;
 	}
 
 	public function save(){}
@@ -97,10 +102,6 @@ class Model {
 
 	public function parseSql(){}
 
-	protected function getModelName(){}
-
-	protected function getTalbeName(){}
-
 	public function getError(){}
 
 	public function getDbError(){}
@@ -109,7 +110,19 @@ class Model {
 
 	public function getLastSql(){}
 
-	public function data(){}
+	/**
+	 * 设置数据对象
+	 * @param $data 数据
+	 * @return Model
+	 */
+	public function data($data = array()){
+		if(!empty($data) && is_array($data)){
+			$this->data = $data;
+		}else{
+			die('_DATA_TYPE_INVALID_');
+		}
+		return $this;
+	}
 
 	public function table(){}
 
@@ -133,6 +146,48 @@ class Model {
 
 	public function fetchSql(){}
 
+
+    /**
+     * 得到当前的数据对象名称
+     * @access public
+     * @return string
+     */
+	public function getModelName(){
+        if(empty($this->name)){
+            $name = substr(get_class($this),0,-strlen('Model'));
+            $this->name = $name;
+        }
+        return $this->name;
+	}
+	
+	public function getTableName(){
+		if(empty($this->tableName)){
+			$this->tableName = strtolower($this->name);	
+			if(!empty($this->tablePrefix)){
+				$this->tableName = $this->tablePrefix . '_' . $this->tableName;
+			}
+		}
+		return $this->tableName;
+	}
+
+	 /**
+     * 分析表达式
+     * @param array $options 表达式参数
+     * @return array
+     */
+	private function _parseOptions($options = array()){
+		if(is_array($options) && !empty($options)){
+			$options =  array_merge($this->options,$options);
+		}
+
+        if(!isset($options['table'])){
+            $options['table'] = $this->getTableName();
+        }
+
+		//清空表达式
+		$this->options = array();
+		return $options;
+	}
 
 
 
