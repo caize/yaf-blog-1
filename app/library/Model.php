@@ -76,7 +76,7 @@ class Model {
 			return false;
 		}
 		$options = $this->_parseOptions();
-		$result = $this->db->insert($data,$options,$replace);
+		$result  = $this->db->insert($data,$options,$replace);
 		return $result;
 	}
 

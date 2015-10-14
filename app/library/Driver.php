@@ -118,7 +118,6 @@ abstract class Driver{
      * @return false | int
      */
 	public function insert($data = array(), $options = array(), $replace = false){
-	
 	}
 
 
