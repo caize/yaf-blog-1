@@ -4,7 +4,6 @@ class PostModel extends Model{
 	
 
 
-
 }
 
 

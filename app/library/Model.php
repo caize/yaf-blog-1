@@ -34,10 +34,10 @@ class Model {
     protected $fields           =   array();
 
     // 数据信息
-    protected $data             =   array();
+    protected $data = array();
 
     // 链操作方法列表
-    protected $methods          =   array('strict','order','alias','having','group','lock','distinct','auto','filter','validate','result','token','index','force');
+    protected $methods = array('strict','order','alias','having','group','lock','distinct','auto','filter','validate','result','token','index','force');
 
 
 	public function __construct(){
@@ -48,15 +48,7 @@ class Model {
 		$this->db();
 	}
 
-	//public function __set(){}
-
-	//public function __get(){}
-
     public function __isset($name){}
-
-    //public function __unset($name) {
-
-    //public function __call($name) {
 
 	public function db(){
 		$this->db = Db::getInstance();		
@@ -86,7 +78,18 @@ class Model {
 
 	public function select(){}
 
-	public function find(){}
+
+	public function find($options = array()){
+		$options['limit'] = 1;
+		$options = $this->_parseOptions($options);
+		$result  = $this->db->select($options);
+		if(false === $result) return false;
+		if(empty($result)) return null;
+		if(is_string($result)) return $result;
+		$this->data = $result[0];
+		return $this->data;
+	}
+
 
 	public function setField(){}
 
@@ -97,10 +100,6 @@ class Model {
 	public function check(){}
 
 	public function query(){}
-
-	public function execute(){}
-
-	public function parseSql(){}
 
 	public function getError(){}
 
@@ -136,7 +135,29 @@ class Model {
 
 	public function field(){}
 
-	public function where(){}
+	public function where($where,$parse=null){
+        if(!is_null($parse) && is_string($where)) {
+            if(!is_array($parse)) {
+                $parse = func_get_args();
+                array_shift($parse);
+            }
+            $parse = array_map(array($this->db,'escapeString'),$parse);
+            $where =   vsprintf($where,$parse);
+        }elseif(is_object($where)){
+            $where  =   get_object_vars($where);
+        }
+        if(is_string($where) && '' != $where){
+            $map    =   array();
+            $map['_string']   =   $where;
+            $where  =   $map;
+        }
+        if(isset($this->options['where'])){
+            $this->options['where'] =   array_merge($this->options['where'],$where);
+        }else{
+            $this->options['where'] =   $where;
+        }
+        return $this;
+	}
 
 	public function limit(){}
 
