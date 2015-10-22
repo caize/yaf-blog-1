@@ -54,6 +54,61 @@ class Model {
 		$this->db = Db::getInstance();		
 	}
 
+    /**
+     * 保存数据
+     * @access public
+     * @param mixed $data 数据
+     * @param array $options 表达式
+     * @return boolean
+     */
+    public function update($data='',$options=array()) {
+        if(empty($data)) {
+            // 没有传递数据，获取当前数据对象的值
+            if(!empty($this->data)) {
+                $data           =   $this->data;
+                // 重置数据
+                $this->data     =   array();
+            }else{
+                $this->error    =   L('_DATA_TYPE_INVALID_');
+                return false;
+            }
+        }
+        $data  = $this->_facade($data);
+        if(empty($data)){
+            $this->error = L('_DATA_TYPE_INVALID_');
+            return false;
+        }
+        $options = $this->_parseOptions($options);
+        if(!isset($options['where']) ) {
+            // 如果存在主键数据 则自动作为更新条件
+            if (is_string($pk) && isset($data[$pk])) {
+                $where[$pk] = $data[$pk];
+                unset($data[$pk]);
+            } elseif (is_array($pk)) {
+                // 增加复合主键支持
+                foreach ($pk as $field) {
+                    if(isset($data[$field])) {
+                        $where[$field] = $data[$field];
+					} else {
+						// 如果缺少复合主键数据则不执行
+						$this->error = L('_OPERATION_WRONG_');
+                        return false;
+                    }
+                    unset($data[$field]);
+                }
+            }
+            if(!isset($where)){
+                // 如果没有任何更新条件则不执行
+                $this->error = L('_OPERATION_WRONG_');
+                return false;
+            }else{
+                $options['where'] = $where;
+            }
+        }
+		$result = $this->db->update($data,$options);
+		return $result;
+	}
+
 	/**
 	 * @func 添加数据
 	 * @param $replace 是否replace 默认false
@@ -74,9 +129,24 @@ class Model {
 
 	public function save(){}
 	
-	public function del(){}
 
-	public function select(){}
+	public function del($options = array()){
+		$options =  $this->_parseOptions($options);
+
+		// 如果条件为空 不进行删除操作 除非设置 1=1
+        if(empty($options['where'])) return false;
+
+		$result = $this->db->delete($options);
+		return $result;
+	}
+
+
+	public function select($options=array()){
+		$options = $this->_parseOptions($options);	
+		$result  = $this->db->select($options);
+		if(false === $result) return false;
+		return $result;
+	}
 
 
 	public function find($options = array()){
@@ -159,7 +229,13 @@ class Model {
         return $this;
 	}
 
-	public function limit(){}
+	public function limit($offset,$length=null){
+        if(is_null($length) && strpos($offset,',')){
+            list($offset,$length) = explode(',',$offset);
+        }
+        $this->options['limit'] = intval($offset).( $length? ','.intval($length) : '' );
+        return $this;
+	}
 
 	public function page(){}
 
@@ -197,21 +273,78 @@ class Model {
      * @return array
      */
 	private function _parseOptions($options = array()){
-		if(is_array($options) && !empty($options)){
-			$options =  array_merge($this->options,$options);
+		if(is_array($options)){
+			@$options = array_merge($this->options,$options);
 		}
 
         if(!isset($options['table'])){
             $options['table'] = $this->getTableName();
         }
 
-		//清空表达式
 		$this->options = array();
 		return $options;
 	}
 
+    /**
+     * 对保存到数据库的数据进行处理
+     * @access protected
+     * @param mixed $data 要操作的数据
+     * @return boolean
+     */
+     protected function _facade($data) {
+        // 检查数据字段合法性
+        if(!empty($this->fields)) {
+            if(!empty($this->options['field'])) {
+                $fields =   $this->options['field'];
+                unset($this->options['field']);
+                if(is_string($fields)) {
+                    $fields =   explode(',',$fields);
+                }    
+            }else{
+                $fields =   $this->fields;
+            }        
+            foreach ($data as $key=>$val){
+                if(!in_array($key,$fields,true)){
+                    if(!empty($this->options['strict'])){
+                        E(L('_DATA_TYPE_INVALID_').':['.$key.'=>'.$val.']');
+                    }
+                    unset($data[$key]);
+                }elseif(is_scalar($val)) {
+                    // 字段类型检查 和 强制转换
+                    $this->_parseType($data,$key);
+                }
+            }
+        }
+       
+        // 安全过滤
+        if(!empty($this->options['filter'])) {
+            $data = array_map($this->options['filter'],$data);
+            unset($this->options['filter']);
+        }
+        return $data;
+     }
 
-
+    /**
+     * 数据类型检测
+     * @access protected
+     * @param mixed $data 数据
+     * @param string $key 字段名
+     * @return void
+     */
+    protected function _parseType(&$data,$key) {
+        if(!isset($this->options['bind'][':'.$key]) && isset($this->fields['_type'][$key])){
+            $fieldType = strtolower($this->fields['_type'][$key]);
+            if(false !== strpos($fieldType,'enum')){
+                // 支持ENUM类型优先检测
+            }elseif(false === strpos($fieldType,'bigint') && false !== strpos($fieldType,'int')) {
+                $data[$key]   =  intval($data[$key]);
+            }elseif(false !== strpos($fieldType,'float') || false !== strpos($fieldType,'double')){
+                $data[$key]   =  floatval($data[$key]);
+            }elseif(false !== strpos($fieldType,'bool')){
+                $data[$key]   =  (bool)$data[$key];
+            }
+        }
+    }
 
 
 }

@@ -67,6 +67,49 @@ abstract class Driver{
 	}
 
     /**
+     * 更新记录
+     * @access public
+     * @param mixed $data 数据
+     * @param array $options 表达式
+     * @return false | integer
+     */
+    public function update($data,$options) {
+        $table = $this->parseTable($options['table']);
+        $sql   = 'UPDATE ' . $table . $this->parseSet($data);
+        if(strpos($table,',')){// 多表更新支持JOIN操作
+            $sql .= $this->parseJoin(!empty($options['join'])?$options['join']:'');
+        }
+        $sql .= $this->parseWhere(!empty($options['where'])?$options['where']:'');
+        if(!strpos($table,',')){
+            //  单表更新支持order和lmit
+            $sql   .=  $this->parseOrder(!empty($options['order'])?$options['order']:'')
+                .$this->parseLimit(!empty($options['limit'])?$options['limit']:'');
+        }
+        $sql .=   $this->parseComment(!empty($options['comment'])?$options['comment']:'');
+        return $this->execute($sql,!empty($options['fetch_sql']) ? true : false);
+    }
+
+
+   	/**
+     * 删除记录
+     * @access public
+     * @param array $options 表达式
+     * @return false | integer
+     */
+    public function delete($options=array()) {
+        $table = $this->parseTable($options['table']);
+        $sql   = 'DELETE FROM '.$table;
+        $sql .= $this->parseWhere(!empty($options['where'])?$options['where']:'');
+        if(!strpos($table,',')){
+            $sql .= $this->parseOrder(!empty($options['order'])?$options['order']:'')
+            .$this->parseLimit(!empty($options['limit'])?$options['limit']:'');
+        }
+        $sql .= $this->parseComment(!empty($options['comment'])?$options['comment']:'');
+        return $this->execute($sql,!empty($options['fetch_sql']) ? true : false);
+	}
+
+
+    /**
      * 执行查询 返回数据集
      * @access public
      * @param string $str  sql指令
@@ -632,5 +675,34 @@ abstract class Driver{
             return $this->error;
         }
     }
+
+
+    /**
+     * set分析
+     * @access protected
+     * @param array $data
+     * @return string
+     */
+    protected function parseSet($data) {
+        foreach ($data as $key=>$val){
+            if(is_array($val) && 'exp' == $val[0]){
+                $set[]  =   $this->parseKey($key).'='.$val[1];
+            }elseif(is_null($val)){
+                $set[]  =   $this->parseKey($key).'=NULL';
+            }elseif(is_scalar($val)) {// 过滤非标量数据
+                if(0===strpos($val,':') && in_array($val,array_keys($this->bind)) ){
+                    $set[]  =   $this->parseKey($key).'='.$this->escapeString($val);
+                }else{
+                    $name   =   count($this->bind);
+                    $set[]  =   $this->parseKey($key).'=:'.$name;
+                    $this->bindParam($name,$val);
+                }
+            }
+        }
+        return ' SET '.implode(',',$set);
+    }
+
+
+
 
 }
