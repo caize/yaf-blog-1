@@ -1,10 +1,10 @@
 <?php
-class IndexController extends Yaf_Controller_Abstract {
+class IndexController extends Controller{
 
-	public function indexAction() {//默认Action
-		echo 'Admin';exit;
-		//$this->getView()->assign("content", "Hello Admin");
+	public function indexAction() {
+		$this->show('index/index.html');
 	}
 
 }
+
 ?>

@@ -1,0 +1,26 @@
+<div id="sidebar">
+	<?php 
+		$icons = array(
+			'index'    => 'icon-home',
+			'article'  => 'icon-book',
+			'category' => 'icon-tasks',
+			'tag' 	   => 'icon-tags',
+			'user'     => 'icon-user',
+			'link'     => 'icon-link',
+			'config'   => 'icon-wrench'
+		); 
+	?>
+	<div class="avatar">
+		<img src="/Public/img/avatar.jpg" alt="" class="img-circle">
+		<span>Hello,KuLee</span>
+	</div>
+	<ul class="nav nav-stacked" role="tablist">
+		<volist name="sidebar" id="vo">
+			<li class="{$key} <if condition='$action eq $key'>active</if>">
+				<a href="/admin.php/{$key}"><i class="{$icons[$key]}"></i> {$vo}</a>
+			</li>
+		</volist>
+	</ul>
+
+
+</div>

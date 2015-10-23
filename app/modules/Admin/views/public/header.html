@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>苦李博客 | 后台管理</title>
+	<load href="/Public/bootstrap/css/bootstrap.min.css" />
+	<load href="/Public/bootstrap/css/font-awesome.min.css" />
+	<load href="/Public/simditor/font-awesome.css" />
+	<load href="/Public/simditor/simditor.css" />
+	<load href="/Public/icheck/skins/all.css" />
+	<load href="/Public/js/jquery.mCustomScrollbar.css" />
+	<load href="/Public/css/admin.css" />
+</head>
+<body>	
+<header>
+		<h1 role="logo">苦李博客</h1>
+		<div class="account" role="account">
+			<span class="glyphicon glyphicon-user"></span>
+			<if condition="$user">
+				<span class="user">{$user}</span>
+				<span><a href="/admin.php/public/logout">退出</a></span>
+			<else />
+				<span class="user">未登录</span>
+			</if>
+		</div>
+</header>
+
