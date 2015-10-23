@@ -1,0 +1,83 @@
+/* 添加文章和编辑文章页面的样式 */
+
+	.simditor_page {
+		margin-top: 20px;
+		margin-bottom: 50px;
+	}
+	.simditor_page label.category {
+		float: left;
+		width: 481px;
+		display: block;
+		color: #8C5B7B;
+	}
+
+	.simditor_page label.tag {
+		color: #8C5B7B;
+		width: 481px;
+	}
+	.simditor_page label i {
+		cursor: pointer;
+		color: #42A881;
+	}
+
+	.simditor_page .ct {
+		margin-top: 15px;
+	}
+
+	.simditor_page .ct label span.label {
+		font-size: 13px;
+		color: #428bca;
+		padding: 3px 7px;
+		cursor: pointer;
+	}
+
+	.simditor_page .ct label i {
+		margin-left: 10px;
+	}
+
+	ul {
+		list-style: none;
+	}
+
+	.article_select .modal-dialog {
+		width: 70%;
+	}
+
+	.article_select .modal-body {
+		width: 90%;
+		margin-left: 50px;
+	}
+
+	.article_select .pcategory {
+		padding-bottom: 5px;
+		clear: both;
+		border-bottom: 1px solid #008573;
+	}
+
+	.article_select ul.ccategory {
+		margin-top: 7px;
+		margin-left: -40px;
+		margin-bottom: 60px;
+	}
+
+	.article_select ul li {
+		float: left;
+		position:relative;
+		padding:0 20px 18px 0;
+		margin-right: 15px;
+	}
+
+	.article_select ul li label {
+		color: #666;
+		font-family: 'Times New Roman';
+		font-weight: 100;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+
+	.article_select .pcategory label {
+		color: #008573;
+		margin-left: 12px;
+		font-size: 15px;
+		letter-spacing: 1px;
+	}
