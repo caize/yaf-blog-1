@@ -1,0 +1,423 @@
+body{
+	line-height: 1.6;
+	font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","微软雅黑","黑体",Arial,sans-serif;
+	color: #222;
+	font-size: 14px;
+	overflow: hidden;
+}
+
+._num {
+	font-family: Georgia, "宋体";
+}
+
+ul {
+	list-style: none;
+}
+
+
+header{
+	position: fixed;
+	background-color: #AD8B32;
+	border-top: 4px solid #AD8B32;
+	border-bottom: 1px solid #DDE0CF;
+	top:0;
+	left:0;
+	right: 0;
+	color: #ccc;
+	height: 60px;
+}
+
+header h1 {
+	font-size: 27px;
+	width: 10%;
+	height: 100%;
+	margin: 0;
+	float: left;
+	line-height: 60px;
+	text-align: center;
+}
+
+header .account{
+	float: right;
+	line-height: 59px;
+	color: #FFFFFF;
+	height: 55px;
+	width: 90%;
+	background-color: #C6BE9A;
+	text-align: right;
+	padding-right: 40px;
+	border-radius: 8px 0 0 0;
+	-webkit-border-radius: 8px 0 0 0;
+    -moz-border-radius: 8px 0 0 0;
+}
+
+header .account .user{
+	margin-right: 10px;
+	margin-left: 5px;
+}
+
+
+#sidebar {
+	position: fixed;
+	width: 10%;
+	height: 100%;
+	top: 61px;
+	left: 0;
+	background-color: #F4F4F4;
+}
+
+#sidebar .avatar {
+	text-align: center;
+	color: #aaa;
+}
+
+#sidebar .avatar img {
+	width: 80px;
+	height: 80px;
+	display: block;
+	margin: 10px auto;
+}
+
+#sidebar .nav {
+	margin-top: 20px;
+	font-size: 16px;
+	letter-spacing: 1px;
+	float: left;
+	width: 99%;
+}
+
+#sidebar .nav li {
+	padding-left: 15%;
+}
+
+#sidebar .nav li.active,
+#sidebar .nav li:hover {
+	background-color: #fff;
+}
+
+#sidebar .nav li:first-child {
+	border-top: 1px solid #e4e4e4;
+}
+#sidebar .nav li {
+	border-bottom: 1px solid #e4e4e4;
+}
+
+#sidebar .nav li a {
+	width: 100%;
+	color: #937460;
+}
+
+#sidebar .nav a:hover {
+	background: none;
+}
+
+#sidebar i {
+	margin-right: 4px;
+}
+
+#sidebar .divider {
+	height:100%; 
+	width:1px;
+	background:#ccc;
+	float:right;
+	border-left: 1px solid #DDE0CF;
+}
+
+
+
+/*---------.container begin-------------*/
+
+.container {
+	width: 85%;
+	margin-left: 15%;
+	margin-top: 66px;
+	height: 89%;
+	display: block;
+	overflow: auto;
+	position: absolute;
+}
+
+.container .title,
+.container .main {
+	width: 962px;
+}
+
+.container .title {
+	margin-top: 20px;
+	border-bottom: 2px solid #C9D98F;
+	font-size: 16px;
+	letter-spacing: 1px;
+}
+
+.container .title span {
+	margin-right: 25px;
+	margin-bottom: -2px;
+	padding: 0 10px 5px 10px;
+	display: inline-block;
+}
+
+.container .title span a {
+	color: #777;
+	text-decoration: none;
+}
+
+.container .title span:hover {
+	cursor: pointer;
+	border-bottom: 4px solid #ccc;
+}
+
+.container .title span.active {
+	border-bottom: 4px solid #9CC1D9;
+}
+
+.container .title .action {
+	float: right;
+}
+
+.container .title .action button {
+	margin: -6px 10px 0 0;
+	padding: 3px 8px;
+	letter-spacing: 1px;
+}
+
+.container .main {
+	margin-top: 30px;
+}
+
+.container i {
+	cursor: pointer;
+}
+
+
+
+
+#index .block_nav {
+	margin: 0 auto;
+	display: block;
+	width: 1000px;
+	float: left;
+}
+
+#index .block {
+	width: 300px;
+	height: 150px;
+	float: left;
+	margin-right: 30px;
+	margin-top: 20px;
+	color: #FFF;
+	text-align: center;
+	font-size: 30px;
+	line-height: 150px;
+}
+
+#index .block:hover {
+	opacity: 0.7;
+	cursor: pointer;
+}
+
+#index .block i {
+	font-size: 40px;
+}
+
+#index .block_article {
+	background-color: #CC9999;
+}
+
+#index .block_category {
+	background-color: #FF6666;
+}
+
+#index .block_tag {
+	background-color: #FF9966;
+}
+
+#index .block_email {
+	background-color: #666699;
+}
+
+#index .block_comment {
+	background-color: #FF9999;
+}
+
+#index .block_config {
+	background-color: #66CCCC;
+}
+
+
+#article label.category {
+	float: left;
+	width: 481px;
+	display: block;
+	color: #8C5B7B;
+}
+
+#article label.tag {
+	/*float: left;*/
+	color: #8C5B7B;
+	width: 481px;
+	/*float: right;*/
+}
+
+#article label i {
+	cursor: pointer;
+	color: #42A881;
+}
+
+#article .ct {
+	margin-top: 15px;
+}
+
+#article .ct label span.label {
+	font-size: 13px;
+	color: #428bca;
+	padding: 3px 7px;
+	cursor: pointer;
+}
+
+#article .ct label i {
+	margin-left: 10px;
+}
+
+#article .a_action {
+	text-align: center;
+	margin-top: 40px;
+}
+
+#article .a_action button {
+	width: 150px;
+	margin-right: 20px;
+	margin-bottom: 30px;
+	letter-spacing: 5px;
+}
+
+
+
+/* #artice 选择分类、标签 */
+.article_select .modal-dialog {
+	width: 70%;
+}
+
+.article_select .modal-body {
+	width: 90%;
+	margin-left: 50px;
+}
+
+.article_select .pcategory {
+	padding-bottom: 5px;
+	clear: both;
+	border-bottom: 1px solid #008573;
+}
+
+.article_select ul.ccategory {
+	margin-top: 7px;
+	margin-left: -40px;
+	margin-bottom: 60px;
+}
+
+.article_select ul li {
+	float: left;
+	position:relative;
+	padding:0 20px 18px 0;
+	margin-right: 15px;
+}
+
+.article_select ul li label {
+	color: #666;
+	font-family: 'Times New Roman';
+	font-weight: 100;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.article_select .pcategory label {
+	color: #008573;
+	margin-left: 12px;
+	font-size: 15px;
+	letter-spacing: 1px;
+}
+
+
+
+
+#category .main table tbody tr td.img img {
+	width: 30px;
+	height: 30px;
+}
+
+
+
+
+.login {
+	padding-top: 13%;
+	margin: 0 auto;
+}
+
+.login form {
+	width: 540px;
+	display:inline-block; 
+	position:relative; 
+	margin-left: 35%; 
+	padding:40px 100px; 
+	background:#fafafa;
+	box-shadow:0 0 3px rgba(0, 0, 0, 0.2); 
+	-moz-border-radius:4px; 
+	border-radius:4px; 
+	color:rgba(0,0,0, 0.8); 
+	text-shadow:0 1px 0 #fff;
+}
+
+.login form::before,
+.login form::after {
+	position:absolute; 
+	content:""; 
+	top:10px; 
+	bottom:15px; 
+	left:10px; 
+	width:50%; 
+	box-shadow:0 15px 10px rgba(0, 0, 0, 0.5); 
+	-webkit-transform: rotate(-3deg); 
+	-moz-transform:rotate(-3deg); 
+	-o-transform:rotate(-3deg); 
+	-ms-transform:rotate(-3deg); 
+	transform:rotate(-3deg); 
+	z-index:-1;
+}
+
+.login form::after {
+	right:10px; 
+	left:auto; 
+	-webkit-transform:rotate(3deg); 
+	-moz-transform:rotate(3deg); 
+	-o-transform:rotate(3deg); 
+	-ms-transform:rotate(3deg); 
+	transform: rotate(3deg);
+}
+
+.login h3 {
+	padding-bottom: 15px;
+	color: #666;
+	letter-spacing: 4px;
+}
+
+.login .form-control {
+	height: 44px;
+	width: 240px !important;
+}
+
+.login .form-group {
+	padding-bottom: 20px;
+}
+
+.login .input-group-addon {
+	width: 50px !important;
+	background-color: #fff;
+}
+
+.login button {
+	letter-spacing: 3px;
+	width: 290px;
+	height: 44px;
+}
+
+
+
