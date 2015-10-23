@@ -29,7 +29,7 @@ header{
 
 header h1 {
 	font-size: 27px;
-	width: 10%;
+	width: 15%;
 	height: 100%;
 	margin: 0;
 	float: left;
@@ -42,7 +42,7 @@ header .account{
 	line-height: 59px;
 	color: #FFFFFF;
 	height: 55px;
-	width: 90%;
+	width: 85%;
 	background-color: #C6BE9A;
 	text-align: right;
 	padding-right: 40px;
@@ -59,9 +59,9 @@ header .account .user{
 
 #sidebar {
 	position: fixed;
-	width: 10%;
+	width: 15%;
 	height: 100%;
-	top: 61px;
+	top: 59px;
 	left: 0;
 	background-color: #F4F4F4;
 }
