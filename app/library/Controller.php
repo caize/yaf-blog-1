@@ -2,24 +2,12 @@
 class Controller extends Yaf_Controller_Abstract {
 
 	public function init(){
-		//error_reporting(0);
 	}
 
 	public function assign($n,$p){
-		//$api = new Api;
-		//$hots = $api->articles_by_hot();
-		//$categories = $api->categories();
-		//$this->getView()->assign('hots',$hots);
-		//$this->getView()->assign('categories',$categories);
 		if($n && $p) $this->getView()->assign($n,$p);
 	}
 
-	public function show($tpl){
-		$this->getView()->display('public/header.html');
-		$this->getView()->display('public/sidebar.html');
-		$this->getView()->display($tpl);
-		$this->getView()->display('public/footer.html');
-	}
 
 	/**
 	 * @func 获取参数   

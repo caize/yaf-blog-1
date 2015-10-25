@@ -1,7 +1,7 @@
-<include file="Public:header" />
-<include file="Public:sidebar" />
+{include file="public/header.tpl"}
+{include file="public/sidebar.tpl"}
 <div id="article" class="container">
-	<include file="title" />
+	{include file="post/title.tpl"}
 	<div class="main">
 		<table class="table table-striped">
 			<thead>
@@ -9,18 +9,15 @@
 					<th>标题</th>
 					<th>分类</th>
 					<th>标签</th>
-					<th>评论</th>
 					<th>日期</th>
 					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
-				<volist name="list" id="vo">
 					<tr>
 						<td>{$vo.title}</td>
 						<td>{$vo.category}</td>
 						<td>{$vo.tag}</td>
-						<td>{$vo.comment_num}</td>
 						<td>{$vo.date}</td>
 						<td aim_id="{$vo.id}" recommanded="{$vo.recommanded}" status="{$vo.status}">
 							<i title="快速编辑" bf="bf_update_article" func="_modal" modal="update_article" class="click icon-edit"></i>&nbsp;
@@ -28,12 +25,11 @@
 							<i aim_id="{$vo.id}" func="del_article" class="icon-remove click"></i> 
 						</td>
 					</tr>
-				</volist>
+				<tr><td colspan="5">暂无相关文章</td></tr>
 			</tbody>
 		</table>
 	</div>
 </div>
-
 <div id="update_article" class="modal fade">
 	<div class="modal-dialog">
 	<div class="modal-content">
@@ -52,17 +48,21 @@
 						<input type="radio" name="status" value="0"> 发布
 					</label>
 					<label class="radio-inline">
-						<input type="radio" name="status" value="1"> 草稿
+						<input checked="1" type="radio" name="status" value="1"> 草稿
 					</label>
 				</div>
 				<div class="form-group">
 					<label  class="col-sm-2 control-label">推荐</label>
 					<label class="radio-inline">
-						<input checked type="radio" name="recommanded" value="1"> 是
+						<input type="radio" name="recommanded" value="1"> 是
 					</label>
 					<label class="radio-inline">
-						<input checked type="radio" name="recommanded" value="0"> 否
+						<input type="radio" name="recommanded" value="0"> 否
 					</label>
+				</div>
+				<div class="form-group">
+					<label  class="col-sm-2 control-label">定时</label>
+					<input type="text" name="date" id="datetimepicker">
 				</div>
 			</form>
 		</div>
@@ -77,5 +77,4 @@
 	</div>
 	</div>
 </div>
-
-<include file="Public:footer" />
+{include file="public/footer.tpl"}

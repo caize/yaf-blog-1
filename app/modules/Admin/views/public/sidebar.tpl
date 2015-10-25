@@ -11,6 +11,9 @@
 			<a href="/admin/post/index"><i class="icon-book"></i> 文 章</a>
 		</li>
 		<li class="">
+			<a href="/admin/post/index"><i class="icon-comment"></i> 评 论</a>
+		</li>
+		<li class="">
 			<a href="/admin/index/index"><i class="icon-tasks"></i> 分 类</a>
 		</li>
 		<li class="">
