@@ -2,7 +2,8 @@
 class IndexController extends Controller{
 
 	public function indexAction() {
-		$this->show('index/index.html');
+		$this->assign('content','ccccc');
+		$this->display('index');
 	}
 
 }
