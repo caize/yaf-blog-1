@@ -15,6 +15,7 @@
 				</tr>
 			</thead>
 			<tbody>
+			{section name=vo loop=$list}
 				<tr>
 					<td></td>
 					<td></td>
@@ -27,6 +28,9 @@
 						<i aim_id="{$vo.id}" func="del_article" class="icon-remove click"></i> 
 					</td>
 				</tr>
+			{sectionelse}
+				<tr><td colspan='6'><i>没有相关文章</i></td></tr>
+			{/section}
 			</tbody>
 		</table>
 	</div>
