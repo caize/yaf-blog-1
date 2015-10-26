@@ -4,16 +4,17 @@ class Controller extends Yaf_Controller_Abstract {
 	public function init(){
 	}
 
-	public function assign($n,$p){
+	protected function assign($n,$p){
 		if($n && $p) $this->getView()->assign($n,$p);
 	}
+
 
 
 	/**
 	 * @func 获取参数   
 	 * @param mixed $p
 	 */
-	public function gp($p = null){
+	protected function gp($p = null){
 		if(is_string($p)){
 			$re = trim($this->getRequest()->getParam($p));
 		}else{
