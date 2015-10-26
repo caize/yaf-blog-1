@@ -1,8 +1,8 @@
 <?php
-class PostController extends Controller{
+class PostController extends BaseAdmin{
 
-	public function indexAction(){
-		$this->display('index');
+	public function listAction(){
+		$this->display('list');
 	}
 
 	public function draftAction(){
@@ -23,6 +23,7 @@ class PostController extends Controller{
 
 
 
+	
 
 }
 

@@ -14,6 +14,7 @@
 				</tr>
 			</thead>
 			<tbody>
+			{section name=vo loop=$list}
 					<tr>
 						<td>{$vo.title}</td>
 						<td>{$vo.category}</td>
@@ -23,7 +24,9 @@
 							<i aim_id="{$vo.id}" func="regain_article" title="恢复为草稿" class="icon-check click"></i> 
 						</td>
 					</tr>
-				<tr><td colspan="5">暂无相关文章</td></tr>
+			{sectionelse}
+				<tr><td colspan='6'><i>没有相关文章</i></td></tr>
+			{/section}
 			</tbody>
 		</table>
 	</div>
