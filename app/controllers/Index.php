@@ -15,6 +15,7 @@ class IndexController extends Yaf_Controller_Abstract {
 		//var_dump($re);exit;
 		//$this->getView()->assign("content", "Hello World");
 		//echo '<pre>';
+		$this->assign('content','Hello World');
 		$this->display('index');
 	}
 

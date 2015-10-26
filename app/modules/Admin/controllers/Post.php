@@ -5,7 +5,6 @@ class PostController extends Controller{
 		$this->display('index');
 	}
 
-
 	public function draftAction() {
 		$this->display('draft');
 	}
