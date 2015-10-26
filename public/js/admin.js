@@ -1,5 +1,10 @@
 $(document).ready(function(){
 
+	new Simditor({
+		textarea: $('#editor'),
+		toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent']
+	});
+
 	//选择框
 	$('input.icheck').iCheck({
         checkboxClass: 'icheckbox_flat-red',
@@ -252,9 +257,9 @@ function add_article(o){
 	_ajax(obj);
 }
 
-function click_add_article(o){
-	window.open('/admin.php/article/add');
-}
+//function click_add_post(o){
+	//window.open('/admin.php/article/add');
+//}
 
 //添加分类
 function add_category(o){

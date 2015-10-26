@@ -1,21 +1,26 @@
 <?php
 class PostController extends Controller{
 
-	public function indexAction() {
+	public function indexAction(){
 		$this->display('index');
 	}
 
-	public function draftAction() {
+	public function draftAction(){
 		$this->display('draft');
 	}
 
-	public function timingAction() {
+	public function timingAction(){
 		$this->display('timing');
 	}
 
-	public function delAction() {
+	public function addAction(){
+		$this->display('add');
+	}
+
+	public function delAction(){
 		$this->display('del');
 	}
+
 
 
 

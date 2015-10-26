@@ -3,11 +3,15 @@
 		<!--<img src="/Public/img/avatar.jpg" alt="" class="img-circle">-->
 		<!--<span>Hello,小山</span>-->
 	<!--</div>-->
+	{php}
+		$active = 'post';
+		$$active = 'active';
+	{/php}	
 	<ul class="nav nav-stacked" role="tablist">
-		<li class="active">
+		<li class="{$index}">
 			<a href="/admin/index/index"><i class="icon-home"></i> 仪表盘</a>
 		</li>
-		<li class="">
+		<li class="{$post}">
 			<a href="/admin/post/index"><i class="icon-book"></i> 文 章</a>
 		</li>
 		<li class="">

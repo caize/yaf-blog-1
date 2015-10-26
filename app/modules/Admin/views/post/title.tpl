@@ -12,8 +12,8 @@
 			<a href="/admin/post/del">已删除文章</a>
 		</span>
 		<div class="action">
-			<button type="button" func="click_add_post" class="click btn-xs btn btn-success">
+			<a href="/admin/post/add" type="button" class="btn-xs btn btn-success">
 				<i class="icon-plus"></i> 添加文章	
-			</button>
+			</a>
 		</div>
 	</div>
