@@ -1,7 +1,7 @@
-<include file="Public:header" />
-<include file="Public:sidebar" />
+{include file="public/header.tpl"}
+{include file="public/sidebar.tpl"}
 <div id="category" class="container">
-	<include file="title" />
+	{include file="category/title.tpl"}
 	<div class="main">
 		<table class="table table-striped">
 			<thead>
@@ -16,26 +16,19 @@
 				</tr>
 			</thead>
 			<tbody>
-				<volist name="list" id="vo">
 					<tr>
-						<td name="name">{$vo.name}</td>
-						<td name="alias">{$vo.alias}</td>
-						<td name="desc">{$vo.desc}</td>
-						<td name="pname">{$vo.pname}</td>
-						<td name="num">{$vo.num}</td>
-						<td name="img" value="{$vo.img}" class="img">
-							<if condition="$vo['img']">
-								<img src="/Public/icon/{$vo.img}" alt="" class="img-circle">
-							<else />
-								<img src="/Public/icon/none.jpg" alt="" class="img-circle">
-							</if>
+						<td name="name"></td>
+						<td name="alias"></td>
+						<td name="desc"></td>
+						<td name="pname"></td>
+						<td name="num"></td>
+						<td name="img" value="" class="img">
 						</td>
-						<td aim_id="{$vo.id}">
+						<td aim_id="">
 							<i title="编辑" bf="bf_update_category" func="_modal" modal="update_category" class="click icon-edit"></i>&nbsp;
 							<i title="删除" func="del_category" class="click icon-remove"></i>
 						</td>
 					</tr>
-				</volist>
 			</tbody>
 		</table>
 	</div>
@@ -70,11 +63,6 @@
 					<div class="col-sm-9">
 						<select n='1' p="父级" name="pid" class="_param form-control">
 							<option value="0">无</option>
-							<volist name="list" id="vo">
-								<?php if($vo['pid'] == 0){ ?>
-									<option value="{$vo.id}">{$vo.name}</option>
-								<?php } ?>
-							</volist>
 						</select>
 					</div>
 				</div>
@@ -133,11 +121,6 @@
 					<div class="col-sm-9">
 						<select n='1' p="父级" name="pid" class="_param form-control">
 							<option value="0">无</option>
-							<volist name="list" id="vo">
-								<?php if($vo['pid'] == 0){ ?>
-									<option value="{$vo.id}">{$vo.name}</option>
-								<?php } ?>
-							</volist>
 						</select>
 					</div>
 				</div>
@@ -166,6 +149,4 @@
 	</div>
 	</div>
 </div>
-
-
-<include file="Public:footer" />
+{include file="public/footer.tpl"}
