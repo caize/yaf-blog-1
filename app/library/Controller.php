@@ -15,10 +15,26 @@ class Controller extends Yaf_Controller_Abstract {
 	 * @param mixed $p
 	 */
 	protected function gp($p = null){
-		if(is_string($p)){
-			$re = trim($this->getRequest()->getParam($p));
+		$method = '';
+		$is_str = is_string($p);
+		switch($this->getRequest()->method){
+			case 'POST':
+				$method = 'getPost';
+				break;
+			case 'GET':
+				$method = 'getQuery';
+				break;
+			default:
+				if($is_str){
+					$method = 'getParam';
+				}else{
+					$method = 'getParams';
+				}
+		}
+		if($is_str){
+			$re = trim($this->getRequest()->$method($p));
 		}else{
-			$re = $this->getRequest()->getParams();
+			$re = $this->getRequest()->$method();
 			if(is_array($p)){
 				$re = array_intersect_key($re,array_flip($p));	
 			}

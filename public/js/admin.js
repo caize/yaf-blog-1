@@ -265,17 +265,18 @@ function add_article(o){
 function add_category(o){
 	var param = _param('#add_category');
 	if( !param ){ return false; }
-	var url = "/admin.php/category/ajax_add";
+	var url = "/admin/category/ajaxadd";
 	var obj = {};
 	obj.param = param;
 	obj.url   = url;
-	_ajax(obj);
+	cl(obj);
+	//_ajax(obj);
 }
 
 function add_tag(o){
 	var param = _param('#add_tag');
 	if( !param ){ return false; }
-	var url = "/admin.php/tag/ajax_add";
+	var url = "/admin/tag/ajaxadd";
 	var obj = {};
 	obj.param = param;
 	obj.url   = url;

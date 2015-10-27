@@ -31,7 +31,7 @@
 						</td>
 					</tr>
 			{sectionelse}
-				<tr><td colspan='6'><i>暂无分类</i></td></tr>
+				<tr><td colspan='7'><i>暂无分类</i></td></tr>
 			{/section}
 			</tbody>
 		</table>
