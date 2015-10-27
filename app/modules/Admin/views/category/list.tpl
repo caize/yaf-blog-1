@@ -16,6 +16,7 @@
 				</tr>
 			</thead>
 			<tbody>
+			{section name=vo loop=$list}
 					<tr>
 						<td name="name"></td>
 						<td name="alias"></td>
@@ -29,6 +30,9 @@
 							<i title="删除" func="del_category" class="click icon-remove"></i>
 						</td>
 					</tr>
+			{sectionelse}
+				<tr><td colspan='6'><i>暂无分类</i></td></tr>
+			{/section}
 			</tbody>
 		</table>
 	</div>

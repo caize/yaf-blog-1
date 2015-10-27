@@ -1,10 +1,8 @@
 <div class="title">
-	<span class="<?php if($func == 'index') echo 'active'; ?>">
-		<a href='/admin/category'>分类列表</a>
+	<span class="{$list}">
+		<a href='/admin/category/list'>分类出发</a>
 	</span>
-	<div class="action">
-		<button type="button" modal="add_category" func="_modal" class="click btn-xs btn btn-success">
-			<i class="icon-plus"></i> 添加分类
-		</button>
-	</div>
+	<span class="{$add}">
+		<a href='/admin/category/add'>添加分类</a>
+	</span>
 </div>

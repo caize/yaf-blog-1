@@ -1,8 +1,7 @@
-<include file="Public:header" />
-<include file="Public:sidebar" />
-
+{include file="public/header.tpl"}
+{include file="public/sidebar.tpl"}
 <div id="tag" class="container">
-	<include file="title" />
+	{include file="tag/title.tpl"}
 	<div class="main">
 		<table class="table table-striped">
 			<thead>
@@ -15,18 +14,20 @@
 				</tr>
 			</thead>
 			<tbody>
-				<volist name="list" id="vo">
+			{section name=vo loop=$list}
 					<tr>
-						<td name="name">{$vo.name}</td>
-						<td name="alias">{$vo.alias}</td>
-						<td name="desc">{$vo.desc}</td>
-						<td>{$vo.num}</td>
-						<td aim_id="{$vo.id}">
+						<td name="name"></td>
+						<td name="alias"></td>
+						<td name="desc"></td>
+						<td></td>
+						<td aim_id="">
 							<i title="编辑" bf="bf_update_tag" func="_modal" modal="update_tag" class="click icon-edit"></i>&nbsp;
 							<i title="删除" func="del_tag" class="click icon-remove"></i>
 						</td>
 					</tr>
-				</volist>
+			{sectionelse}
+				<tr><td colspan='6'><i>暂无标签</i></td></tr>
+			{/section}
 			</tbody>
 		</table>
 	</div>
@@ -119,5 +120,4 @@
 	</div>
 	</div>
 </div>
-
-<include file="Public:footer" />
+{include file="public/footer.tpl"}

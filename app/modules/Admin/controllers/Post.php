@@ -17,10 +17,11 @@ class PostController extends BaseAdmin{
 		$this->display('add');
 	}
 
-	public function delAction(){
+	public function ajaxDelAction(){
 		$this->display('del');
 	}
 
+	public function ajaxAddAction(){}
 
 
 	
