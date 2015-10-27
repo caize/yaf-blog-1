@@ -5,6 +5,18 @@ class CategoryController extends BaseAdmin{
 		$this->display('list');
 	}
 
+	public function addAction() {
+		$this->display('add');
+	}
+
+	public function ajaxAddAction(){
+		
+	}
+
+
+
+
+
 }
 
 ?>
