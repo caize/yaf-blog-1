@@ -1,6 +1,8 @@
 <?php
 class PostController extends BaseController{
 
+
+
 	public function listAction(){
 		$this->display('list');
 	}
@@ -14,14 +16,21 @@ class PostController extends BaseController{
 	}
 
 	public function addAction(){
+		$C = new TaxonomyModel();
+		$clist = $C->returnCategoryList();
+		$tlist = $C->returnTagList();
+		$this->assign('clist',$clist);
+		$this->assign('tlist',$tlist);
 		$this->display('add');
 	}
 
 	public function ajaxDelAction(){
-		$this->display('del');
 	}
 
-	public function ajaxAddAction(){}
+	public function ajaxAddAction(){
+		$params = $this->gp();	
+		vd($params);
+	}
 
 
 	
