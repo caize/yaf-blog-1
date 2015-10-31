@@ -1,5 +1,5 @@
 <?php
-class IndexController extends BaseAdmin{
+class IndexController extends BaseController{
 
 	public function indexAction() {
 		$this->display('index');

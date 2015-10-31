@@ -34,7 +34,7 @@ DROP TABLE IF EXISTS `kl_taxonomy`;
 CREATE TABLE `kl_taxonomy` (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
     `pid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '父ID',
-    `type` int(1) NOT NULL DEFAULT '0' COMMENT '0：分类；1：标签；2：教程名称；3：目录的章节名称',
+    `type` int(1) NOT NULL DEFAULT '0' COMMENT '1：分类；2：标签；3：教程名称；4：目录的章节名称',
     `name` varchar(255) NOT NULL COMMENT '名称',
     `slug` varchar(255) NOT NULl COMMENT '缩略名 主要用于URL',
     `ctime` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',

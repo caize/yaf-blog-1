@@ -88,3 +88,4 @@
 </div>
 
 {include file="public/footer.tpl"}
+<script type="text/javascript" src="/Public/js/simditor.js"></script>

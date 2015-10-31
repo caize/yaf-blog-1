@@ -3,30 +3,27 @@
 <div id="tag" class="container">
 	{include file="tag/title.tpl"}
 	<div class="main">
-		<table class="table table-striped">
+		<table class="table table-bordered table-striped">
 			<thead>
 				<tr>
 					<th>名称</th>
 					<th>别名</th>
-					<th>描述</th>
-					<th>文章</th>
 					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
-			{section name=vo loop=$list}
-					<tr>
-						<td name="name"></td>
-						<td name="alias"></td>
-						<td name="desc"></td>
-						<td></td>
-						<td aim_id="">
-							<i title="编辑" bf="bf_update_tag" func="_modal" modal="update_tag" class="click icon-edit"></i>&nbsp;
-							<i title="删除" func="del_tag" class="click icon-remove"></i>
-						</td>
-					</tr>
+			{section name=vo loop=$_list}
+				<tr>
+					<td>{$_list[vo].name}</td>
+					<td>{$_list[vo].slug}</td>
+					<td aim_id="{$_list[vo].id}">
+						<a bf="bf_update_tag" func="_modal" modal="update_tag" class="click" href="">编辑</a>
+						&nbsp;&nbsp;
+						<a func="del_tag" class="click" onclick="return false;" href="#">删除</a>
+					</td>
+				</tr>
 			{sectionelse}
-				<tr><td colspan='6'><i>暂无标签</i></td></tr>
+				<tr><td colspan='3'><i>暂无标签</i></td></tr>
 			{/section}
 			</tbody>
 		</table>
