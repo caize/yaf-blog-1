@@ -1,6 +1,6 @@
 <?php
 
-class BaseAdmin extends Controller {
+class BaseController extends Controller {
 
 	public function init(){
 		$this->_assign_controller_name();

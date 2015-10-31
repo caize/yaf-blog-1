@@ -9,7 +9,9 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
 
 	public function _initPlugin(Yaf_Dispatcher $dispatcher) {
 		$view = new ViewPlugin();
+		$autoload = new AutoloadPlugin();
 		$dispatcher->registerPlugin($view);
+		$dispatcher->registerPlugin($autoload);
 	}
 
 	public function _initSmarty(Yaf_Dispatcher $dispatcher) {  

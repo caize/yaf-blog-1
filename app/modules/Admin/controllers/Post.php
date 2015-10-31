@@ -1,5 +1,5 @@
 <?php
-class PostController extends BaseAdmin{
+class PostController extends BaseController{
 
 	public function listAction(){
 		$this->display('list');

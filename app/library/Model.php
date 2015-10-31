@@ -55,6 +55,40 @@ class Model {
 	}
 
     /**
+     * 利用__call方法实现一些特殊的Model方法
+     * @access public
+     * @param string $method 方法名称
+     * @param array $args 调用参数
+     * @return mixed
+     */
+    public function __call($method,$args) {
+        if(in_array(strtolower($method),$this->methods,true)) {
+            // 连贯操作的实现
+            $this->options[strtolower($method)] =   $args[0];
+            return $this;
+        }elseif(in_array(strtolower($method),array('count','sum','min','max','avg'),true)){
+            // 统计查询的实现
+            $field =  isset($args[0])?$args[0]:'*';
+            return $this->getField(strtoupper($method).'('.$field.') AS tp_'.$method);
+        }elseif(strtolower(substr($method,0,5))=='getby') {
+            // 根据某个字段获取记录
+            $field   =   parse_name(substr($method,5));
+            $where[$field] =  $args[0];
+            return $this->where($where)->find();
+        }elseif(strtolower(substr($method,0,10))=='getfieldby') {
+            // 根据某个字段获取记录的某个值
+            $name   =   parse_name(substr($method,10));
+            $where[$name] =$args[0];
+            return $this->where($where)->getField($args[1]);
+        }elseif(isset($this->_scope[$method])){// 命名范围的单独调用支持
+            return $this->scope($method,$args[0]);
+        }else{
+            E(__CLASS__.':'.$method.L('_METHOD_NOT_EXIST_'));
+            return;
+        }
+    }
+
+    /**
      * 保存数据
      * @access public
      * @param mixed $data 数据
@@ -117,6 +151,7 @@ class Model {
 	public function add($replace = false){
 		if(!empty($this->data)){
 			$data = $this->data;	// 获取数据对象的值
+			$data['ctime'] = time();
 			$this->data = array();	//重置数据
 		}else{
 			$this->error = die('_DATA_TYPE_INVALID_');

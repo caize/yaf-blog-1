@@ -1,17 +1,7 @@
 <?php
-class CategoryController extends BaseAdmin{
+class CategoryController extends TaxonomyController{
 
-	public function listAction() {
-		$this->display('list');
-	}
-
-	public function addAction() {
-		$this->display('add');
-	}
-
-	public function ajaxAddAction(){
-		
-	}
+	protected $type = 1;
 
 
 

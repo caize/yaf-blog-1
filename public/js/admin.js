@@ -1,9 +1,5 @@
 $(document).ready(function(){
 
-	new Simditor({
-		textarea: $('#editor'),
-		toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent']
-	});
 
 	//选择框
 	$('input.icheck').iCheck({
@@ -137,7 +133,7 @@ function del_tag(o){
 	param.id = o.parent().attr('aim_id');
 	var re = confirm('确认要删除该标签！');
 	if(re){
-		var url = "/admin.php/tag/ajax_del";
+		var url = "/admin/tag/ajaxdel";
 		var obj = {};
 		obj.param = param;
 		obj.url   = url;
@@ -190,7 +186,7 @@ function del_category(o){
 	param.id = o.parent().attr('aim_id');
 	var re = confirm('确认要删除该分类！');
 	if(re){
-		var url = "/admin.php/category/ajax_del";
+		var url = "/admin/category/ajaxdel";
 		var obj = {};
 		obj.param = param;
 		obj.url   = url;
@@ -269,8 +265,7 @@ function add_category(o){
 	var obj = {};
 	obj.param = param;
 	obj.url   = url;
-	cl(obj);
-	//_ajax(obj);
+	_ajax(obj);
 }
 
 function add_tag(o){

@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * @func ajax return
+ */
+function ar($code,$info = '',$func = ''){
+    $return = array();
+    $return['code'] = $code;
+    $return['body'] = $info;
+    $return['func'] = $func;
+    echo json_encode($return);
+    exit;
+}
 
 //临时函数
 function vd($data, $flag = 0){

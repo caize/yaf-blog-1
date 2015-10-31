@@ -1,9 +1,9 @@
 	<div class="title">
-		<span class="{$add}">
-			<a href='/admin/post/add'>添加文章</a>
-		</span>
 		<span class="{$list}">
 			<a href='/admin/post/list'>文章列表</a>
+		</span>
+		<span class="{$add}">
+			<a href='/admin/post/add'>添加文章</a>
 		</span>
 		<span class="{$draft}">
 			<a href="/admin/post/draft">草稿管理</a>
