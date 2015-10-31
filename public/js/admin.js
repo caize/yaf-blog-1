@@ -237,25 +237,21 @@ function do_login(){
 //发表文章
 function add_article(o){
 	var param = _param('#article');
-	// var flag  = o.attr('flag');
 	if( !param ){ return false; }
 	param.category = return_category();
 	param.tag      = return_tag();
-	param.flag     = o.attr('flag');
+	//param.flag     = o.attr('flag');
 	if(!(param.category && param.tag)){
 		alert('尚未选择分类或标签！');
 		return false;
 	}
-	var url = "/admin.php/article/ajax_add";
+	var url = "/admin/post/ajaxadd";
 	var obj = {};
 	obj.param = param;
 	obj.url   = url;
 	_ajax(obj);
 }
 
-//function click_add_post(o){
-	//window.open('/admin.php/article/add');
-//}
 
 //添加分类
 function add_category(o){

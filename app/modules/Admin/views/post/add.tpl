@@ -40,15 +40,15 @@
 			<h4 class="modal-title">选择分类</h4>
 		</div>
 		<div class="modal-body">
-				<div class="pcategory">
-					<input class="icheck" type="checkbox" value="">
-					<label></label>
-				</div>
 				<ul class="ccategory">
-						<li>
-							<input class="icheck" type="checkbox" value="">
-							<label></label>
-						</li>
+					{section name=category loop=$clist}
+					<li>
+						<input class="icheck" type="checkbox" value="{$clist[category].id}">
+						<label>{$clist[category].name}</label>
+					</li>
+					{sectionelse}
+						<p>暂无标签</p>
+					{/section}
 				</ul>
 		</div>
 		<div class="modal-footer">
@@ -72,11 +72,16 @@
 		</div>
 		<div class="modal-body">
 			<ul class="ccategory">
+					{section name=tag loop=$tlist}
 					<li>
-						<input class="icheck" type="checkbox" value="">
-						<label></label>
+						<input class="icheck" type="checkbox" value="{$tlist[tag].id}">
+						<label>{$tlist[tag].name}</label>
 					</li>
+					{sectionelse}
+						<p>暂无标签</p>
+					{/section}
 			</ul>
+			<div style="clear:both"></div>
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">

@@ -279,7 +279,7 @@ header .account .user{
 }
 
 #article .a_action {
-	text-align: center;
+	/*text-align: center;*/
 	margin-top: 40px;
 }
 
@@ -300,6 +300,7 @@ header .account .user{
 .article_select .modal-body {
 	width: 90%;
 	margin-left: 50px;
+	padding: 15px; 
 }
 
 .article_select .pcategory {
