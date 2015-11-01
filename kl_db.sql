@@ -21,7 +21,7 @@ CREATE TABLE `kl_post` (
     `slug` varchar(255) DEFAULT '' COMMENT '缩略名 主要用于URL',
     `content` longtext NOT NULL COMMENT '文章内容',
     `excerpt` text COMMENT '摘要',
-    `status` int(1) DEFAULT NULL COMMENT '0.发布；1.草稿；2.定时待发布；-1.删除',
+    `status` int(1) DEFAULT '0' COMMENT '0.发布；1.草稿；2.定时待发布；-1.删除',
     `recommanded` int(1) DEFAULT '0',
     `views` int(11) NOT NULL DEFAULT '1' COMMENT '浏览量',
     `ctime` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
