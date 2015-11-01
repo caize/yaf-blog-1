@@ -134,7 +134,6 @@ abstract class Driver{
             }
         }
         $this->bind = array();
-		//var_dump($this->PDOStatement);exit;
         $result = $this->PDOStatement->execute();
         if ( false === $result ) {
             $this->error();
@@ -545,6 +544,42 @@ abstract class Driver{
 		return $this->execute($sql);
 	}
 
+	/**
+	 * 批量插入记录
+	 * @access public
+	 * @param mixed $dataSet 数据集
+	 * @param array $options 参数表达式
+	 * @param boolean $replace 是否replace
+	 * @return false | integer
+	 */
+	public function insertAll($dataSet,$options=array(),$replace=false) {
+		$values = array();
+		if(!is_array($dataSet[0])) return false;
+		$fields =  array_map(array($this,'parseKey'),array_keys($dataSet[0]));
+		foreach ($dataSet as $data){
+			$value   =  array();
+			foreach ($data as $key=>$val){
+				if(is_array($val) && 'exp' == $val[0]){
+					$value[]   =    $val[1];
+				}elseif(is_null($val)){
+					$value[]   =   'NULL';
+				}elseif(is_scalar($val)){
+					if(0===strpos($val,':') && in_array($val,array_keys($this->bind))){
+						$value[]   =   $this->parseValue($val);
+					}else{
+						$name     =   count($this->bind);
+						$value[]  =   ':'.$name;
+						$this->bindParam($name,$val);
+					}
+				}
+			}
+			$values[]    = 'SELECT '.implode(',', $value);
+		}
+		$sql   =  'INSERT INTO '.$this->parseTable($options['table']).' ('.implode(',', $fields).') '.implode(' UNION ALL ',$values);
+		$sql   .= $this->parseComment(!empty($options['comment'])?$options['comment']:'');
+		return $this->execute($sql,!empty($options['fetch_sql']) ? true : false);
+	}
+
 
     /**
      * 执行语句
@@ -583,6 +618,7 @@ abstract class Driver{
             $this->numRows = $this->PDOStatement->rowCount();
             if(preg_match("/^\s*(INSERT\s+INTO|REPLACE\s+INTO)\s+/i", $str)) {
                 $this->lastInsID = $this->linked->lastInsertId();
+				return $this->lastInsID;
             }
             return $this->numRows;
         }

@@ -2,7 +2,6 @@
 class PostController extends BaseController{
 
 
-
 	public function listAction(){
 		$this->display('list');
 	}
@@ -13,6 +12,10 @@ class PostController extends BaseController{
 
 	public function timingAction(){
 		$this->display('timing');
+	}
+
+	public function delAction(){
+		$this->display('del');
 	}
 
 	public function addAction(){
@@ -29,7 +32,29 @@ class PostController extends BaseController{
 
 	public function ajaxAddAction(){
 		$params = $this->gp();	
-		vd($params);
+
+		$P = new PostModel();
+		$T = new TaxonomyModel();
+		$M = new TaxonomyMapModel();
+
+		//添加文章
+		$pdata['title']   = $params['title'];
+		$pdata['content'] = $params['content'];
+		$post_id = $P->data($pdata)->add();
+
+		//添加分类和标签
+		$tdata = array();
+		$category_arr = explode('_',trim($params['category'],'_'));
+		$tag_arr = explode('_',trim($params['tag'],'_'));
+		$tarr = array_merge($category_arr,$tag_arr);
+
+		$twhere['id'] = array('in',$tarr);
+		//$tlist = $T->fields('type,name,slug')->where($twhere)->select();
+		//array_walk($tlist,'array_walk_merge',array('post_id'=>$post_id));
+		vd($tlist);
+
+		$M->data($tdata)->addAll();
+		ar('success');
 	}
 
 

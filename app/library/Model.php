@@ -162,6 +162,29 @@ class Model {
 		return $result;
 	}
 
+
+	/**
+	 * @func 批量添加数据
+	 * @param $replace 是否replace 默认false
+	 * @return mixed
+	 */
+	public function addAll($replace = false){
+		$dataList = $this->data;
+		if(empty($dataList)) {
+			$this->error = L('_DATA_TYPE_INVALID_');
+			return false;
+		}
+		$options = $this->_parseOption();
+		$result  = $this->db->insertAll($dataList,$options,$replace);
+		if(false !== $result ) {
+			$insertId = $this->getLastInsID();
+			if($insertId) {
+				return $insertId;
+			}
+		}
+		return $result;	
+	}
+
 	public function save(){}
 	
 
