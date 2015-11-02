@@ -1,5 +1,4 @@
-<include file="Public:header" />
-
+{include file="public/header.tpl"}
 <div class="login">
 	<form class="form-inline" role="form">
 		<h3>登录</h3>
@@ -18,5 +17,4 @@
 		<button id="do_login" type="button" func="do_login" class="click btn btn-info">登录</button>
 	</form>
 </div>
-
-<include file="Public:footer" />
+{include file="public/footer.tpl"}

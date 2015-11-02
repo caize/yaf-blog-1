@@ -174,7 +174,7 @@ class Model {
 			$this->error = L('_DATA_TYPE_INVALID_');
 			return false;
 		}
-		$options = $this->_parseOption();
+		$options = $this->_parseOptions();
 		$result  = $this->db->insertAll($dataList,$options,$replace);
 		if(false !== $result ) {
 			$insertId = $this->getLastInsID();
@@ -261,7 +261,18 @@ class Model {
 
 	public function cache(){}
 
-	public function field(){}
+
+    /**
+     * 指定查询字段 支持字段排除
+     * @access public
+     * @param mixed $field
+     * @param boolean $except 是否排除
+     * @return Model
+     */
+	public function field($field,$except=false){
+        $this->options['field'] = $field;
+        return $this;
+	}
 
 	public function where($where,$parse=null){
         if(!is_null($parse) && is_string($where)) {
@@ -317,7 +328,7 @@ class Model {
 	
 	public function getTableName(){
 		if(empty($this->tableName)){
-			$this->tableName = strtolower($this->name);	
+			$this->tableName = strtolower(parse_name($this->name));	
 			if(!empty($this->tablePrefix)){
 				$this->tableName = $this->tablePrefix . '_' . $this->tableName;
 			}
@@ -405,8 +416,16 @@ class Model {
     }
 
 
+    /**
+     * 返回最后插入的ID
+     * @access public
+     * @return string
+     */
+    public function getLastInsID() {
+        return $this->db->getLastInsID();
+    }
+
+
 }
-
-
 
 ?>

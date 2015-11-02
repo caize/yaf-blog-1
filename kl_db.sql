@@ -15,7 +15,7 @@ CREATE TABLE `kl_post` (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
     `uid` int(11) NOT NULL DEFAULT '0' COMMENT '作者ID',
     `type` int(1) NOT NULL DEFAULT '0' COMMENT '0：文章；1：页面；2：教程页面',
-    `date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '发表日期',
+    `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `title` varchar(255) NOT NULL COMMENT '文章标题',
     `parent` varchar(100) DEFAULT '' COMMENT '该字段只在页面为教程页面时有用 表示该页面属于哪个教程的缩略名',
     `slug` varchar(255) DEFAULT '' COMMENT '缩略名 主要用于URL',

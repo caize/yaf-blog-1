@@ -739,6 +739,14 @@ abstract class Driver{
     }
 
 
+    /**
+     * 获取最近插入的ID
+     * @access public
+     * @return string
+     */
+    public function getLastInsID() {
+        return $this->lastInsID;
+    }
 
 
 }
