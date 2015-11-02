@@ -3,6 +3,9 @@ class PostController extends BaseController{
 
 
 	public function listAction(){
+		$P =  new PostModel();
+		$list = $P->returnPublishList();
+		$this->assign('plist',$list);
 		$this->display('list');
 	}
 
@@ -28,6 +31,11 @@ class PostController extends BaseController{
 	}
 
 	public function ajaxDelAction(){
+		$id = $this->gp('id');
+		
+		$P = new PostModel();
+		$re = $P->delById($id);
+		ar('reload');
 	}
 
 	public function ajaxAddAction(){
@@ -49,12 +57,16 @@ class PostController extends BaseController{
 		$tarr = array_merge($category_arr,$tag_arr);
 
 		$twhere['id'] = array('in',$tarr);
-		//$tlist = $T->fields('type,name,slug')->where($twhere)->select();
-		//array_walk($tlist,'array_walk_merge',array('post_id'=>$post_id));
-		vd($tlist);
-
-		$M->data($tdata)->addAll();
-		ar('success');
+		$tlist = $T->field('id,type,name,slug')->where($twhere)->select();
+		foreach($tlist as &$v){
+			$v['post_id'] = $post_id;
+			$v['taxonomy_id']   = $v['id'];
+			$v['taxonomy_name'] = $v['name'];
+			$v['taxonomy_slug'] = $v['slug'];
+			unset($v['id'],$v['name'],$v['slug']);
+		}
+		$M->data($tlist)->addAll();
+		ar('jump','/admin/post/list');
 	}
 
 

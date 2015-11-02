@@ -3,29 +3,25 @@
 <div id="article" class="container">
 {include file="post/title.tpl"}
 	<div class="main">
-		<table class="table table-striped">
+		<table class="table table-bordered table-striped">
 			<thead>
 				<tr>
+					<th>ID</th>
 					<th>标题</th>
-					<th>分类</th>
-					<th>标签</th>
-					<th>评论</th>
 					<th>日期</th>
 					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
-			{section name=vo loop=$list}
+			{section name=vo loop=$plist}
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td aim_id="{$vo.id}" recommanded="{$vo.recommanded}" status="{$vo.status}">
-						<i title="快速编辑" bf="bf_update_article" func="_modal" modal="update_article" class="click icon-edit"></i>&nbsp;
-						<i title="编辑" func="re_edit_article" class="click icon-pencil"></i>&nbsp;
-						<i aim_id="{$vo.id}" func="del_article" class="icon-remove click"></i> 
+					<td>{$plist[vo].id}</td>
+					<td>{$plist[vo].title}</td>
+					<td>{$plist[vo].date}</td>
+					<td aim_id="{$plist[vo].id}" recommanded="{$vo.recommanded}" status="{$vo.status}">
+						<a bf="" func="_modal" modal="update_tag" class="click" href="">编辑</a>
+						&nbsp;&nbsp;
+						<a func="del_post" class="click" onclick="return false;" href="#">删除</a>
 					</td>
 				</tr>
 			{sectionelse}

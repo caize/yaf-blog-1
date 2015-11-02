@@ -195,12 +195,12 @@ function del_category(o){
 }
 
 //删除文章
-function del_article(o){
+function del_post(o){
 	var param = {};
-	param.id = o.attr('aim_id');
+	param.id = o.parent().attr('aim_id');
 	var re = confirm('确认要删除这篇文章！');
 	if(re){
-		var url = "/admin.php/article/ajax_del";
+		var url = "/admin/post/ajaxdel";
 		var obj = {};
 		obj.param = param;
 		obj.url   = url;
@@ -226,7 +226,7 @@ function do_login(){
 	param.email = email;
 	param.passwd = passwd;
 
-	var url = "/admin.php/public/ajax_login";
+	var url = "/admin/public/ajaxlogin";
 	var obj = {};
 	obj.param = param;
 	obj.url   = url;
