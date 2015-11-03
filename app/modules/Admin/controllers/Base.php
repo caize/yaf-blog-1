@@ -3,6 +3,12 @@
 class BaseController extends Controller {
 
 	public function init(){
+		$session = Yaf_Session::getInstance();
+		$is_login = $session->get('is_login');
+		if(!$is_login){
+			$this->redirect('/admin/public/login');	
+		}
+		$this->assign('is_login',$is_login);
 		$this->_assign_controller_name();
 		$this->_assign_action_name();
 	}
