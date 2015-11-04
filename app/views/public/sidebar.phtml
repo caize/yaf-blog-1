@@ -1,0 +1,37 @@
+<aside id="sidebar">
+	<div class="widget search">
+<script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=2226498946605873565' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
+	</div>
+	<div class="widget">
+		<h2>文章分类</h2>
+		<nav class="category">
+		<?php
+			foreach($categories as $c){
+		?>
+		<ul><li>
+			<a title="<?php echo $c['name']; ?>" href="/<?php echo $c['alias']; ?>"><?php echo $c['name']; ?></a>
+		</li></ul>
+		<?php	
+			}
+		?>
+		</nav>
+	</div>
+	<div class="widget">
+		<h2>热门文章</h2>
+		<nav class="hot">
+			<ul>
+			<?php
+				foreach($hots as $v){
+			?>
+			<li>
+				<a title="<?php echo $v['title']; ?>" href="/single/<?php echo $v['id']; ?>">
+					<?php echo mb_strimwidth($v['title'],0,40,' ...','utf8'); ?>
+				</a>
+			</li>
+			<?php
+				}
+			?>
+			</ul>
+		</nav>
+	</div>
+</aside>
