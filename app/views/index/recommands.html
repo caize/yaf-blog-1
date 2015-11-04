@@ -1,0 +1,14 @@
+<div class="recommends">
+	<b>推荐阅读：</b>	
+	<div class="recommends_list">
+		<ul>
+			<volist name="rlist" id="vo">
+				<li>
+					<a title="{$vo.title}" href="/single/{$vo.id}">
+					<?php echo mb_substr($vo['title'],0,28,'utf-8'); ?>
+					</a>
+				</li>
+			</volist>
+		</ul>
+	</div>
+</div>

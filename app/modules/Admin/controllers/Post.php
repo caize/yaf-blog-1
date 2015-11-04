@@ -4,7 +4,7 @@ class PostController extends BaseController{
 
 	public function listAction(){
 		$P =  new PostModel();
-		$list = $P->returnPublishList();
+		$list = $P->returnAdminList();
 		$this->assign('plist',$list);
 		$this->display('list');
 	}

@@ -1,8 +1,53 @@
-<html>
- <head>
-   <title>Hello World</title>
- </head>
- <body>
-  <?php echo $content;?>
- </body>
-</html>
+<div id="index" class="content">
+	<div class="alist">
+		<ul>
+		<?php
+			foreach($list as $v){
+		?>
+			<li>
+				<h2><a class="title" href="/single/<?php echo $v['id']; ?>"><?php echo $v['title']; ?></a></h2>
+				<div class="meta">
+					<span>	
+						<i class="icon-book"></i>
+						<?php foreach($v['category'] as $c){ ?>
+						<a href="/<?php echo $c['alias']; ?>"><?php echo $c['name']; ?></a>&nbsp;
+						<?php } ?>
+					</span>					
+					<span>
+						<i class="icon-tags"></i>
+						<?php foreach($v['tag'] as $t){ ?>
+						<a href="/tag/<?php echo $t['alias']; ?>"><?php echo $t['name']; ?></a>&nbsp;
+						<?php } ?>
+					</span>					
+					<span>浏览：<?php echo $v['views']; ?></span>					
+					<span>日期：<?php echo @date('Y/m/d',strtotime($v['date'])); ?></span>					
+				</div>			
+				<p><?php echo mb_strimwidth(strip_tags(html_entity_decode($v['content'])), 0, 300, ' ...'    ,'utf8'); ?></p>				
+			</li>			
+		<?php
+			}
+		?>
+		</ul>
+	</div>	
+	<nav>
+		<?php if($page > 1){ ?>
+	  	<ul class="pagination">
+		    <li>
+				<a href="/page/<?php echo $page - 1; ?>">
+					<span aria-hidden="true">&laquo;&nbsp;上一页</span>
+				</a>
+		    </li>
+		</ul>
+		<?php } ?>
+		<?php if($page < $tpage){ ?>
+		<ul class="pagination fr">
+		    <li>
+				<a href="/page/<?php echo $page + 1; ?>" title="下一页">
+					<span aria-hidden="true">下一页&nbsp;&raquo;</span>
+				</a>
+		    </li>
+		</ul>
+		<?php } ?>
+	</nav>
+</div>
+

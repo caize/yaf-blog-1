@@ -1,0 +1,14 @@
+<div id="category" class="content">
+	<h2>< <?php echo $name; ?> > 相关文章</h2>	
+	<div class="clist">
+	<ul>
+	<?php 
+		foreach($list as $v){
+	?>
+		<li>
+			<a href="/single/<?php echo $v['id']; ?>"><?php echo $v['title']; ?></a>
+		</li>
+	<?php } ?>
+	</ul>
+	</div>	
+</div>
