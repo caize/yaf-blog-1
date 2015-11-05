@@ -10,12 +10,19 @@ class PostModel extends Model{
 
 	//返回前台文章列表
 	public function returnIndexList(){
+		$TM = new TaxonomyModel();
 		$where['type'] = self::PUBLISH;	
 		$field = 'id,title,content,date,views';
 		$list = $this->field($field)->order('id desc')->where($where)->select();
+		$post_id_arr = array_column($list,'id');
+		$category_arr = $TM->returnCategoryByPostIdArr($post_id_arr);
+		$tag_arr = $TM->returnTagByPostIdArr($post_id_arr);
 		foreach($list as &$v){
 			$content = $v['content'];
+			$post_id = $v['id'];
 			$v['content'] = mb_strimwidth(strip_tags($content),0,300,'...','utf8');	
+			$v['category'] = $category_arr[$post_id];
+			$v['tag'] = $tag_arr[$post_id];
 		}
 		return $list;
 	}

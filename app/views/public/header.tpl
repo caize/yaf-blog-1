@@ -19,9 +19,9 @@
 		<div class="holder">
 			<div id="logo">
 				{if 1==1}
-				<h1><a href="/">李苦李</a></h1>
+				<h1><a href="/">李小山</a></h1>
 				{else}
-				<h2><a href="/">李苦李</a></h2>
+				<h2><a href="/">李小山</a></h2>
 				{/if}
 			</div>
 			<!--

@@ -4,6 +4,7 @@ body {
 	line-height: 30px;
 	margin: 0;
 	padding: 0;
+	background: #ececec;
 }
 div,header { display: block; } 
 
@@ -37,8 +38,10 @@ p {
 
 /*----------- #header begin -----------*/
 #header {
-	border-top: 1px solid #2C64B4;
+	/*border-top: 1px solid #2C64B4;*/
 	background: #2C64B4;
+	background: #0066aa;
+	height: 55px;
 }
 
 #header .holder {
@@ -103,7 +106,7 @@ p {
 
 
 #main {
-	max-width: 1025px;
+	max-width: 1180px;
 	margin: 0 auto;
 	padding: 40px 0 54px;
 	overflow: hidden;
@@ -111,9 +114,13 @@ p {
 
 
 .content {
+	background: #ffffff;
 	float: left;
-	width: 70.5%;
-	padding: 0 1.9% 0 0;
+	width: 798px;
+	padding: 20px 40px;
+	/*width: 70.5%;*/
+	/*padding: 0 1.9% 0 0;*/
+	margin: 30px auto 0;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;

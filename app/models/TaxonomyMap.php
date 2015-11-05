@@ -7,6 +7,9 @@ class TaxonomyMapModel extends Model{
 	const JTYPE = 3;	//教程
 	const MTYPE = 4;	//目录
 
+	
+
+
 
 
 }
