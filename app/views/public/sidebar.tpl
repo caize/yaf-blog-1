@@ -1,24 +1,16 @@
 <aside id="sidebar">
-	<div class="widget search">
-	</div>
-<!--
 	<div class="widget">
-		<h2>文章分类</h2>
-		<nav class="category">
+		<h2><span>文章分类</span></h2>
 		<ul><li>
 			<a title="" href="/"></a>
 		</li></ul>
-		</nav>
 	</div>
 	<div class="widget">
-		<h2>热门文章</h2>
-		<nav class="hot">
-			<ul>
+		<h2><span>热门文章</span></h2>
+		<ul>
 			<li>
 				<a title="" href="/single/10"></a>
 			</li>
-			</ul>
-		</nav>
+		</ul>
 	</div>
--->
 </aside>
