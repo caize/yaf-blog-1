@@ -12,7 +12,7 @@
 		</nav>
 		-->
 		<p>
-	    ©2013 - 2015 <a href="/" target="_blank">李苦李</a>  冀ICP备 13006193 号</p>
+	    ©2013 - 2015 <a href="/" target="_blank">李小山</a>  冀ICP备 13006193 号</p>
 	</div>
 </footer>
 </div> <!-- End #wrapper -->

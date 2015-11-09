@@ -17,23 +17,21 @@
 <div id="wrapper">
 	<header id="header">
 		<div class="holder">
-			<div id="logo">
+			<div class="fl" id="logo">
 				{if 1==1}
 				<h1><a href="/">李小山</a></h1>
 				{else}
 				<h2><a href="/">李小山</a></h2>
 				{/if}
 			</div>
-			<!--
-			<nav id="nav">
+			<nav class="fl" id="nav">
 				<ul>
-					<li><a href="/">首页</a></li>
-					<li><a href="/">专题</a></li>
+					<li><a href="/">文章</a></li>
+					<li><a href="/">直播</a></li>
+					<li><a href="/">教程</a></li>
 					<li><a href="/">关于</a></li>
-					<li><a href="/">网站地图</a></li>
 				</ul>
 			</nav>
-			-->
 		</div>
 	</header>
 	<main id="main" role="main">
