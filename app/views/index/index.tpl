@@ -5,7 +5,11 @@
 		<ul>
 		{section name=vo loop=$plist}
 			<li>
+				<!--
+				<div class="pic"><a><img src="/public/image/1.jpg" /></a></div>
+			-->
 				<h2><a class="title" href="/post/{$plist[vo].id}">{$plist[vo].title}</a></h2>
+				<p>{$plist[vo].content}</p>
 				<div class="meta">
 					<span>
 						<i class="icon-book"></i>
@@ -22,7 +26,6 @@
 					<span>浏览：{$plist[vo].views}</span>
 					<span>日期：{$plist[vo].date}</span>
 				</div>
-				<p>{$plist[vo].content}</p>
 			</li>
 		{sectionelse}
 			<p><b><i>暂无文章</i></b></p>

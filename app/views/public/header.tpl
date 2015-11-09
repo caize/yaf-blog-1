@@ -4,9 +4,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>
 	{if 1}
-		 李苦李 - 互联网技术博客
+		 李小山 - 互联网技术博客
 	{else}
-		- 李苦李		
+		- 李小山		
 	{/if}
 	</title>
 	<link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css" />
