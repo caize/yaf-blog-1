@@ -20,7 +20,7 @@ class PostModel extends Model{
 		foreach($list as &$v){
 			$content = $v['content'];
 			$post_id = $v['id'];
-			$v['content'] = mb_strimwidth(strip_tags($content),0,180,'...','utf8');	
+			$v['content'] = mb_strimwidth(strip_tags($content),0,120,'...','utf8');	
 			$v['category'] = $category_arr[$post_id];
 			$v['tag'] = $tag_arr[$post_id];
 		}

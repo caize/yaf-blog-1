@@ -62,6 +62,7 @@ ul li { display: inline-block; }
 	padding: 0 25px;
 }
 
+#nav ul li a.active, 
 #nav ul li a:hover {
 	color: #fff;
 	background: #005599;
@@ -83,8 +84,12 @@ ul li { display: inline-block; }
 
 #index .alist li {
 	margin: 0 0 20px;
-	border-bottom: 1px dashed #d9d9d9;
-	border-bottom: 2px dashed #ccc;
+	padding-bottom: 30px;
+	border-bottom: 1px dashed #ccc;
+}
+
+#index .alist li:last-child {
+	border-bottom: none;
 }
 
 #index .alist li h2 {
@@ -98,18 +103,15 @@ ul li { display: inline-block; }
 	margin: 10px 0 0 0;
 }
 
-#index .pagination {
-	margin-top: -5px;
+#index .alist-pic img{
+	width: 200px;
+	height: 120px;
+	float: left;
 }
 
-#index .pic {
-	/*position: absolute;*/
-	/*left: 0;*/
-	/*width: 200px;*/
-	/*height: 120px;*/
-	/*top: 20px;*/
+#index .alist-main{
+	margin-left: 220px;
 }
-
 
 
 /*---------Begin #sidebar----------*/
@@ -150,14 +152,19 @@ ul li { display: inline-block; }
 
 #sidebar ul li {
 	width: 100%;
-	border-bottom: 1px dashed #c3c4c5;
+	border-bottom: 1px dashed #ddd;
 	margin: 0 0 10px;
 	padding: 3px 0 3px 2px;
 }
 
 #sidebar ul li a {
 	color: #2c3e50;
-	font-size: 14px;
+	font-size: 16px;
+}
+
+#sidebar ul li i {
+	color: #ff7f02;
+	margin-right: 12px;
 }
 
 #sidebar .hot ul {
@@ -282,6 +289,7 @@ ul li { display: inline-block; }
 
 /*------Begin .meta------*/
 .meta {
+	margin-top: 7px;
 	color: #888;
 	font-size: 12px;
 }

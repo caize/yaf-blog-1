@@ -26,10 +26,10 @@
 			</div>
 			<nav class="fl" id="nav">
 				<ul>
-					<li><a href="/">文章</a></li>
-					<li><a href="/">直播</a></li>
-					<li><a href="/">教程</a></li>
-					<li><a href="/">关于</a></li>
+					<li><a class="active" href="/">财经解读</a></li>
+					<li><a href="/">操盘策略</a></li>
+					<li><a href="/">炒股教程</a></li>
+					<li><a href="/">入门知识</a></li>
 				</ul>
 			</nav>
 		</div>
