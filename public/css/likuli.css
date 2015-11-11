@@ -321,6 +321,35 @@ ul li { display: inline-block; }
 }
 
 
+
+/*-------- #pnav --------*/
+#pnav {
+	display: block;	
+	clear: both;
+	float: right;
+	margin-bottom: 30px;
+}
+
+#pnav a.active,
+#pnav a:hover {
+	border-radius: 2px;
+	background-color: #e8e8e8;
+	color: #8e8c87;
+}
+
+#pnav a {
+	color: #aaaaaa;
+	padding: 7px 10px;
+	font: 400 16px/16px Arial,"Microsoft Yahei";
+}
+
+#pnav .pnav-icon i {
+	font-size: 28px;
+	vertical-align: -5px;
+}
+
+
+
 /*-------- #footer --------*/
 #footer {
 	clear: both;	
