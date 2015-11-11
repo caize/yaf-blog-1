@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>
 	{if 1}
-		 李小山 - 互联网技术博客
+		 李小山-- 股票基础知识- 股票入门资料 - 股票基础 
 	{else}
 		- 李小山		
 	{/if}

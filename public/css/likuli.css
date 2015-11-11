@@ -176,6 +176,23 @@ ul li { display: inline-block; }
 #sidebar .hot ul li {
 }
 
+#about h2 {
+	margin-bottom: 10px;
+}
+
+#about p {
+	text-indent: 20px;
+	margin-top: 10px;
+}
+
+#about img {
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin-right: 10px;
+	border-radius: 50%;
+}
+
 
 /*-----Begin #single-----*/
 

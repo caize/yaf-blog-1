@@ -1,6 +1,8 @@
 <aside id="sidebar">
-	<div class="widget">
+	<div id="about" class="widget">
 		<h2><span>关于小山</span></h2>
+		<img src="/public/image/tou.jpg" />
+		<p>资深股票投资人。十余年股票投资经验，热衷股票投资的自由职业者。</p>
 	</div>
 	<div class="widget">
 		<h2><span>精选推荐</span></h2>
