@@ -37,5 +37,22 @@
 		{/section}
 		</ul>
 	</div>
+
+	<nav id="pnav">
+		<ul>
+<!--
+			<li><a class="pnav-icon page-pre" href="#"><i class="icon-angle-left"></i></a></li>
+-->
+			<li><a class="active" href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">...</a></li>
+			<li><a href="#">50</a></li>
+			<li><a class="pnav-icon page-next" href="#"><i class="icon-angle-right"></i></a></li>
+		</ul>
+	</nav>
 </div>
+
 {include file="public/footer.tpl"}
