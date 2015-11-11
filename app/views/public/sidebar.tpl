@@ -1,10 +1,10 @@
 <aside id="sidebar">
-	<div id="about" class="widget">
+	<div id="widget-about" class="widget">
 		<h2><span>关于小山</span></h2>
 		<img src="/public/image/tou.jpg" />
-		<p>资深股票投资人。十余年股票投资经验，热衷股票投资的自由职业者。</p>
+		<p>小山，资深股票投资人。总结分享最专业、最权威的股票学习资料，致力于服务更多的散户投资者。</p>
 	</div>
-	<div class="widget">
+	<div id="widget-recommended" class="widget">
 		<h2><span>精选推荐</span></h2>
 		<ul>
 			<li><i class="icon-angle-right"></i><a title="" href="/">赶快撤退，行情将在疯狂中突然结束！</a></li>
@@ -14,7 +14,7 @@
 			<li><i class="icon-angle-right"></i><a title="" href="/">后2400时代，敢问路在何方？</a></li>
 		</ul>
 	</div>
-	<div class="widget">
+	<div id="widget-hot" class="widget">
 		<h2><span>热门列表</span></h2>
 		<ul>
 			<li><i class="icon-angle-right"></i><a title="" href="/">特别警告：A股将迎来千点下跌！</a></li>

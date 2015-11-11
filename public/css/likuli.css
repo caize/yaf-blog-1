@@ -173,19 +173,17 @@ ul li { display: inline-block; }
 	padding: 0 10px;
 }
 
-#sidebar .hot ul li {
+#widget-about h2 {
+	margin-bottom: 20px;
 }
 
-#about h2 {
-	margin-bottom: 10px;
-}
-
-#about p {
+#widget-about p {
+	line-height: 27px;
 	text-indent: 20px;
 	margin-top: 10px;
 }
 
-#about img {
+#widget-about img {
 	width: 100px;
 	height: 100px;
 	float: left;
