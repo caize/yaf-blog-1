@@ -306,7 +306,13 @@ class Model {
         return $this;
 	}
 
-	public function page(){}
+	public function page($page,$listRows=null){
+		if(is_null($listRows) && strpos($page,',')){
+			list($page,$listRows) = explode(',',$page);
+		}
+		$this->options['page']  = array(intval($page),intval($listRows));
+		return $this;
+	}
 
 	public function comment(){}
 

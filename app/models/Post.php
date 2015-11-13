@@ -7,13 +7,19 @@ class PostModel extends Model{
 	const TIMING  = 2;	//文章为定时发布状态
 	const DELETED = -1;	//文章已删除
 
+	//返回首页总页数
+	public function returnIndexPages($pnum){
+		$where['status'] = self::PUBLISH;	
+		$count = $this->where($where)->count('id');	
+		return $count;
+	}
 
 	//返回前台文章列表
-	public function returnIndexList(){
+	public function returnIndexList($page,$pnum){
 		$TM = new TaxonomyModel();
-		$where['type'] = self::PUBLISH;	
+		$where['status'] = self::PUBLISH;	
 		$field = 'id,title,content,date,views';
-		$list = $this->field($field)->order('id desc')->where($where)->select();
+		$list = $this->field($field)->page($page,$pnum)->order('id desc')->where($where)->select();
 		$post_id_arr = array_column($list,'id');
 		$category_arr = $TM->returnCategoryByPostIdArr($post_id_arr);
 		$tag_arr = $TM->returnTagByPostIdArr($post_id_arr);
@@ -29,19 +35,19 @@ class PostModel extends Model{
 
 	//返回后台文章列表
 	public function returnAdminList(){
-		$where['type'] = self::PUBLISH;	
+		$where['status'] = self::PUBLISH;	
 		return $this->field('id,title,date')->order('id desc')->where($where)->select();
 	}
 
 	private function returnPublishList(){
-		$where['type'] = self::PUBLISH;	
+		$where['status'] = self::PUBLISH;	
 		return $this->order('id desc')->where($where)->select();
 	}
 
 
 	public function delById($id){
 		$where['id'] = $id;
-		$data['type'] = self::DELETED;
+		$data['status'] = self::DELETED;
 		return $this->where($where)->data($data)->update();	
 	}
 
