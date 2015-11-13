@@ -14,13 +14,10 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
 		$dispatcher->registerPlugin($autoload);
 	}
 
-	public function _initSmarty(Yaf_Dispatcher $dispatcher) {  
-		//$smarty = new Smarty_Adapter(
-			//null, 
-			//Yaf_Application::app()->getConfig()->smarty
-		//);  
-		//Yaf_Dispatcher::getInstance()->setView($smarty);  
-	}  
+	public function _initRouter(Yaf_Dispatcher $dispatcher){
+		$router = Yaf_Dispatcher::getInstance()->getRouter();
+		$router->addConfig(Yaf_Registry::get("config")->routes);
+	}
 
 	//加载公共类库
 	public function _initCommon(){
