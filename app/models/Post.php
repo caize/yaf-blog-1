@@ -10,8 +10,9 @@ class PostModel extends Model{
 	//返回首页总页数
 	public function returnIndexPages($pnum){
 		$where['status'] = self::PUBLISH;	
-		$count = $this->where($where)->count('id');	
-		return $count;
+		$count = $this->where($where)->count();	
+		$pages = ceil($count/$pnum);
+		return intval($pages);
 	}
 
 	//返回前台文章列表

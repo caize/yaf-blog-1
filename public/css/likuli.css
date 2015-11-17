@@ -330,6 +330,10 @@ ul li { display: inline-block; }
 	margin-bottom: 30px;
 }
 
+#pnav li {
+	margin-right: 3px;
+}
+
 #pnav a.active,
 #pnav a:hover {
 	border-radius: 2px;

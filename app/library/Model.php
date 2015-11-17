@@ -221,7 +221,64 @@ class Model {
 
 	public function setField(){}
 
-	public function getField(){}
+    /**
+     * 获取一条记录的某个字段值
+     * @access public
+     * @param string $field  字段名
+     * @param string $spea  字段数据间隔符号 NULL返回数组
+     * @return mixed
+     */
+	public function getField($field, $sepa=null){
+		$options['field']  = $field;
+		$options           = $this->_parseOptions($options);
+		$field             = trim($field);
+		if(strpos($field,',') && false !== $sepa) { // 多字段
+			if(!isset($options['limit'])){
+				$options['limit'] = is_numeric($sepa)?$sepa:'';
+			}
+			$resultSet = $this->db->select($options);
+			if(!empty($resultSet)) {
+				if(is_string($resultSet)){
+					return $resultSet;
+				}            	
+				$_field = explode(',', $field);
+				$field  = array_keys($resultSet[0]);
+				$key1   = array_shift($field);
+				$key2   = array_shift($field);
+				$cols   = array();
+				$count  = count($_field);
+				foreach ($resultSet as $result){
+					$name = $result[$key1];
+					if(2==$count) {
+						$cols[$name] = $result[$key2];
+					}else{
+						$cols[$name] = is_string($sepa)?implode($sepa,array_slice($result,1)):$result;
+					}
+				}
+				return $cols;
+			}
+		}else{   // 查找一条记录
+			// 返回数据个数
+			if(true !== $sepa) {// 当sepa指定为true的时候 返回所有数据
+				$options['limit']   =   is_numeric($sepa)?$sepa:1;
+			}
+			$result = $this->db->select($options);
+			if(!empty($result)) {
+				if(is_string($result)){
+					return $result;
+				}            	
+				if(true !== $sepa && 1==$options['limit']) {
+					$data   =   reset($result[0]);
+					return $data;
+				}
+				foreach ($result as $val){
+					$array[]    =   $val[$field];
+				}
+				return $array;
+			}
+		}
+		return null;
+	}
 
 	public function create(){}
 
