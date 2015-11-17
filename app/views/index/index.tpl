@@ -40,17 +40,29 @@
 
 	<nav id="pnav">
 		<ul>
-<!--
+		{if $page neq 1}
 			<li><a class="pnav-icon page-pre" href="#"><i class="icon-angle-left"></i></a></li>
--->
-			<li><a class="active" href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
+		{/if}
+
+		{php}
+			$page  = $this->_tpl_vars[page];
+			$pages = $this->_tpl_vars[pages];
+			for($i=1; $i<=5; $i++){
+				if($i != $page){
+					echo "<li><a href='/page/".$i."'>".$i."</a></li>";
+				}else{
+					echo "<li><a class='active' href='/page/".$i."'>".$i."</a></li>";
+				}
+			}
+		{/php}
+
+		{if $page neq $pages and $pages gt 5}
 			<li><a href="#">...</a></li>
-			<li><a href="#">50</a></li>
+			<li><a href="#">{$pages}</a></li>
+		{/if}
+		{if $page neq $pages}
 			<li><a class="pnav-icon page-next" href="#"><i class="icon-angle-right"></i></a></li>
+		{/if}
 		</ul>
 	</nav>
 </div>
