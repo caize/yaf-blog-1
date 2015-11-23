@@ -41,13 +41,13 @@
 	<nav id="pnav">
 		<ul>
 		{if $page neq 1}
-			<li><a class="pnav-icon page-pre" href="#"><i class="icon-angle-left"></i></a></li>
+			<li><a class="pnav-icon page-pre" href="/page/{$page-1}"><i class="icon-angle-left"></i></a></li>
 		{/if}
 
 		{php}
 			$page  = $this->_tpl_vars[page];
 			$pages = $this->_tpl_vars[pages];
-			for($i=1; $i<=5; $i++){
+			for($i=1; $i<=$pages; $i++){
 				if($i != $page){
 					echo "<li><a href='/page/".$i."'>".$i."</a></li>";
 				}else{
@@ -61,7 +61,7 @@
 			<li><a href="#">{$pages}</a></li>
 		{/if}
 		{if $page neq $pages}
-			<li><a class="pnav-icon page-next" href="#"><i class="icon-angle-right"></i></a></li>
+			<li><a class="pnav-icon page-next" href="{$page+1}"><i class="icon-angle-right"></i></a></li>
 		{/if}
 		</ul>
 	</nav>
