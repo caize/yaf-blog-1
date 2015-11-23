@@ -39,7 +39,7 @@ class PostController extends BaseController{
 	}
 
 	public function ajaxAddAction(){
-		$params = $this->gp();	
+		$params = $this->getRequest()->getPost();	
 
 		$P = new PostModel();
 		$T = new TaxonomyModel();

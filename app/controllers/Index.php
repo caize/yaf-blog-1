@@ -2,7 +2,7 @@
 
 class IndexController extends Controller {
 
-	const PNUM = 2;	//首页文章数
+	const PNUM = 10;	//首页文章数
 
 	public function indexAction() {
 		$page = intval($this->gp('page'));

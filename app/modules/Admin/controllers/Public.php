@@ -12,11 +12,11 @@ class PublicController extends Controller{
 
 
 	public function ajaxLoginAction(){
-		$email  = $this->gp('email');
-		$passwd = $this->gp('passwd');
+		$email  = $this->getRequest()->getPost('email');
+		$passwd = $this->getRequest()->getPost('passwd');
 		$seconds = getdate()['seconds']%10;
 		if($seconds === 0){
-			if($email == 'admin' && $passwd = 'admin'){
+			if($email == 'admin' && $passwd == 'admin'){
 				$session = Yaf_Session::getInstance();
 				$session->set('is_login',true);
 				ar('jump','/admin/index/index');
