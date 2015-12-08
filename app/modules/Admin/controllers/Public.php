@@ -15,8 +15,10 @@ class PublicController extends Controller{
 		$email  = $this->getRequest()->getPost('email');
 		$passwd = $this->getRequest()->getPost('passwd');
 		$seconds = getdate()['seconds']%10;
+		$username = C('admin','username');
+		$password = C('admin','password');
 		if($seconds === 0){
-			if($email == 'admin' && $passwd == 'admin'){
+			if($email == $username && $passwd == $password){
 				$session = Yaf_Session::getInstance();
 				$session->set('is_login',true);
 				ar('jump','/admin/index/index');
