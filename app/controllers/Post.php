@@ -1,9 +1,18 @@
 <?php
-class IndexController extends Yaf_Controller_Abstract {
+class PostController extends Controller {
 
 	public function indexAction() {
-		//new PostModel();
-		$this->getView()->assign("content", "Hello World");
+		$id = intval($this->gp('id'));
+
+		if(!$id) $this->go_404();
+
+		$Post  = new PostModel();
+		$post = $Post->returnPostById($id);
+
+		if(!$post) $this->go_404();
+
+		$this->assign('post',$post);
+		$this->display('index');
 	}
 
 

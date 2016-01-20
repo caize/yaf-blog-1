@@ -26,7 +26,7 @@
 			</div>
 			<nav class="fl" id="nav">
 				<ul>
-					<li><a class="active" href="/">财经解读</a></li>
+					<li><a class="active" href="/">最新文章</a></li>
 					<li><a href="/">操盘策略</a></li>
 					<li><a href="/">炒股教程</a></li>
 					<li><a href="/">入门知识</a></li>
