@@ -7,6 +7,14 @@ class PostModel extends Model{
 	const TIMING  = 2;	//文章为定时发布状态
 	const DELETED = -1;	//文章已删除
 
+
+	public function returnPostById($id){
+		$where['id'] = $id;
+		$where['status'] = self::PUBLISH;
+		return $this->where($where)->find();
+	}
+
+
 	//返回首页总页数
 	public function returnIndexPages($pnum){
 		$where['status'] = self::PUBLISH;	

@@ -60,10 +60,19 @@ class Controller extends Yaf_Controller_Abstract {
     }
 
 
+	/**
+	 * 跳转到404页面
+	 */
+	public function go_404(){
+		$this->redirect('/');
+	}
+
+
 	protected function _array_trim($arr = null){
 		if(!is_array($arr)) return $arr;
 		return array_map(create_function('$v','return trim($v);'),$arr);
 	}
+
 
 	
 
